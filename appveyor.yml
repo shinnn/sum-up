@@ -1,0 +1,23 @@
+init:
+  - git config --global core.autocrlf true
+
+version: '{build}'
+
+environment:
+  matrix:
+    - nodejs_version: '0.10'
+    - nodejs_version: '0.11'
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - npm install --production
+  - npm install tape
+
+build: off
+
+test_script:
+  - ps: 'node test.js # PowerShell'
+  - cmd: node test.js
+
+cache:
+  - node_modules
