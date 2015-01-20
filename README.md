@@ -1,10 +1,11 @@
 # sum-up
 
+[![NPM version](https://img.shields.io/npm/v/sum-up.svg?style=flat)](https://www.npmjs.com/package/sum-up)
 [![Build Status](https://travis-ci.org/shinnn/sum-up.svg?branch=master)](https://travis-ci.org/shinnn/sum-up)
 [![Build status](https://ci.appveyor.com/api/projects/status/75fo71xq2sc86tnv?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/sum-up)
-[![Coverage Status](https://img.shields.io/coveralls/shinnn/sum-up.svg)](https://coveralls.io/r/shinnn/sum-up)
-[![Dependency Status](https://david-dm.org/shinnn/sum-up.svg)](https://david-dm.org/shinnn/sum-up)
-[![devDependency Status](https://david-dm.org/shinnn/sum-up/dev-status.svg)](https://david-dm.org/shinnn/sum-up#info=devDependencies)
+[![Coverage Status](https://img.shields.io/coveralls/shinnn/sum-up.svg?style=flat)](https://coveralls.io/r/shinnn/sum-up)
+[![Dependency Status](https://img.shields.io/david/shinnn/sum-up.svg?style=flat&label=deps)](https://david-dm.org/shinnn/sum-up)
+[![devDependency Status](https://img.shields.io/david/dev/shinnn/sum-up.svg?style=flat&label=devDeps)](https://david-dm.org/shinnn/sum-up#info=devDependencies)
 
 Summarize package information
 
@@ -19,9 +20,7 @@ It helps your CLI tool to display information with `--help` flag.
 
 ## Installation
 
-[![NPM version](https://badge.fury.io/js/sum-up.svg)](https://www.npmjs.org/package/sum-up)
-
-[Use npm.](https://www.npmjs.org/doc/cli/npm-install.html)
+[Use npm.](https://docs.npmjs.com/cli/install)
 
 ```sh
 npm install sum-up
@@ -63,6 +62,6 @@ sumUp(data); //=> 'cli-name v0.6.11\nMy CLI tool.'
 
 ## License
 
-Copyright (c) 2014 [Shinnosuke Watanabe](https://github.com/shinnn)
+Copyright (c) [Shinnosuke Watanabe](https://github.com/shinnn)
 
 Licensed under [the MIT License](./LICENSE).
