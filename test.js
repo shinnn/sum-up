@@ -65,12 +65,12 @@ test('sumUp()', function(t) {
   );
 
   t.throws(
-    sumUp.bind(null), /TypeError.*Argument must be an object\./,
+    sumUp.bind(null), /TypeError.*must be an object\./,
     'should throw a type error when it takes no arguments.'
   );
 
   t.throws(
-    sumUp.bind(null, true),  /TypeError.*Argument must be an object\./,
+    sumUp.bind(null, true),  /TypeError.*must be an object\./,
     'should throw a type error when the argument is not an object.'
   );
 });
