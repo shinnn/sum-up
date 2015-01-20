@@ -6,23 +6,33 @@
 
 var chalk = require('chalk');
 
+function noColor(str) {
+  return str;
+}
+
 module.exports = function sumUp(data) {
   if (typeof data !== 'object') {
-    throw new TypeError('Argument must be an object.');
+    throw new TypeError('Argument to sum-up must be an object.');
   }
 
-  chalk.enabled = chalk.supportsColor &&
-                  data.color === undefined ||
-                  data.color;
+  var cyan;
+  var gray;
+
+  if (chalk.supportsColor && data.color === undefined || data.color) {
+    cyan = chalk.cyan;
+    gray = chalk.gray;
+  } else {
+    cyan = gray = noColor;
+  }
 
   var lines = [];
 
-  var nameAndVersion = chalk.cyan(data.name || '');
+  var nameAndVersion = cyan(data.name || '');
   if (data.version) {
     if (data.name) {
       nameAndVersion += ' ';
     }
-    nameAndVersion += chalk.gray('v' + data.version);
+    nameAndVersion += gray('v' + data.version);
   }
 
   if (nameAndVersion) {
@@ -30,7 +40,7 @@ module.exports = function sumUp(data) {
   }
 
   if (data.homepage) {
-    lines.push(chalk.gray(data.homepage));
+    lines.push(gray(data.homepage));
   }
 
   if (data.description) {

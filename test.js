@@ -8,7 +8,7 @@ var cyan = chalk.cyan;
 var gray = chalk.gray;
 
 test('sumUp()', function(t) {
-  t.plan(9);
+  t.plan(10);
 
   t.equal(sumUp.name, 'sumUp', 'should have a function name.');
 
@@ -23,10 +23,8 @@ test('sumUp()', function(t) {
   );
 
   t.equal(
-    sumUp({
-      version: '1.0.0',
-      color: undefined
-    }), gray('v1.0.0'),
+    sumUp({version: '1.0.0', color: undefined}),
+    gray('v1.0.0'),
     'should return the version of the object with gray color.'
   );
 
@@ -35,7 +33,8 @@ test('sumUp()', function(t) {
       homepage: 'http://nodejs.org/',
       description: 'foo',
       color: true
-    }), gray('http://nodejs.org/') + '\n' + 'foo',
+    }),
+    gray('http://nodejs.org/') + '\n' + 'foo',
     'should return the homepage URL and description of the object.'
   );
 
@@ -55,8 +54,14 @@ test('sumUp()', function(t) {
   );
 
   t.equal(
-    sumUp({name: 'a', color: false}), 'a',
+    sumUp({version: '2.0', color: false}), 'v2.0',
     'should omit colors from string when `color` option is disabled.'
+  );
+
+  t.strictEqual(
+    chalk.supportsColor,
+    true,
+    'should not modify `supportsColor` property of cached chalk module.'
   );
 
   t.throws(
