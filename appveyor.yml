@@ -1,6 +1,8 @@
 init:
   - git config --global core.autocrlf true
 
+shallow_clone: true
+
 version: '{build}'
 
 environment:
