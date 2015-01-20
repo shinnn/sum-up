@@ -6,6 +6,7 @@ var test = require('tape');
 
 var cyan = chalk.cyan;
 var gray = chalk.gray;
+var supportsColor = chalk.supportsColor;
 
 test('sumUp()', function(t) {
   t.plan(10);
@@ -60,7 +61,7 @@ test('sumUp()', function(t) {
 
   t.strictEqual(
     chalk.supportsColor,
-    true,
+    supportsColor,
     'should not modify `supportsColor` property of cached chalk module.'
   );
 
