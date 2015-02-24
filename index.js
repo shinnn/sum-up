@@ -4,14 +4,14 @@
 */
 'use strict';
 
-var Chalk = require('chalk');
+var Chalk = require('chalk').constructor;
 
 module.exports = function sumUp(data) {
   if (typeof data !== 'object') {
     throw new TypeError('Argument must be an object.');
   }
 
-  var chalk = new (Chalk.constructor)({enabled: data.color});
+  var chalk = new Chalk({enabled: data.color});
   var lines = [];
 
   var nameAndVersion = chalk.cyan(data.name || '');
