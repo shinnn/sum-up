@@ -10,9 +10,9 @@
   },
   "scripts": {
     "pretest": "jscs *.js && eslint *.js",
-    "test": "node test.js",
-    "coverage": "istanbul cover test.js; ${npm_package_scripts_clean}",
-    "coveralls": "istanbul cover test.js && istanbul-coveralls"
+    "test": "node test.js --color && node test.js --no-color",
+    "coverage": "istanbul cover test.js -- --color",
+    "coveralls": "${npm_package_scripts_coverage} && istanbul-coveralls"
   },
   "licenses": [
     {
