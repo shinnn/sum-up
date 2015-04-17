@@ -40,11 +40,11 @@
     "chalk": "^1.0.0"
   },
   "devDependencies": {
-    "eslint": "^0.15.0",
-    "istanbul": "^0.3.6",
-    "istanbul-coveralls": "^1.0.1",
-    "jscs": "^1.11.3",
-    "tape": "^3.5.0"
+    "eslint": "^0.19.0",
+    "istanbul": "^0.3.13",
+    "istanbul-coveralls": "^1.0.2",
+    "jscs": "^1.12.0",
+    "tape": "^4.0.0"
   },
   "jscsConfig": {
     "preset": "google",
