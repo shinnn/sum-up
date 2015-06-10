@@ -10,7 +10,7 @@
 Summarize package information
 
 ```javascript
-var sumUp = require('sum-up');
+const sumUp = require('sum-up');
 console.log(sumUp(require('./package.json')));
 ```
 
@@ -22,14 +22,14 @@ It helps your CLI tool to display information with `--help` flag.
 
 [Use npm.](https://docs.npmjs.com/cli/install)
 
-```sh
+```
 npm install sum-up
 ```
 
 ## API
 
 ```javascript
-var sumUp = require('sum-up');
+const sumUp = require('sum-up');
 ```
 
 ### sumUp(*options*)
@@ -47,7 +47,7 @@ Default: `true` if [the environment supports color](https://github.com/sindresor
 `false` omits all ANSI escape code from the string.
 
 ```javascript
-var data = {
+let data = {
   name: 'cli-name',
   version: '0.6.11',
   description: 'My CLI tool.'
