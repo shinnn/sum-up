@@ -4,22 +4,14 @@
   "description": "Summarize package information",
   "repository": "shinnn/sum-up",
   "homepage": "https://github.com/shinnn/sum-up",
-  "author": {
-    "name": "Shinnosuke Watanabe",
-    "url": "https://github.com/shinnn"
-  },
+  "author": "Shinnosuke Watanabe (https://github.com/shinnn)",
   "scripts": {
     "pretest": "eslint --config node_modules/@shinnn/eslintrc-node/rc.json index.js test.js",
     "test": "node test.js --color && node test.js --no-color",
     "coverage": "istanbul cover test.js -- --color",
     "coveralls": "${npm_package_scripts_coverage} && istanbul-coveralls"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/shinnn/sum-up/blob/master/LICENSE"
-    }
-  ],
+  "license": "MIT",
   "files": [
     "index.js"
   ],
@@ -41,9 +33,9 @@
   },
   "devDependencies": {
     "@shinnn/eslintrc-node": "^1.0.2",
-    "eslint": "^0.20.0",
-    "istanbul": "^0.3.13",
-    "istanbul-coveralls": "^1.0.2",
+    "eslint": "^0.22.1",
+    "istanbul": "^0.3.15",
+    "istanbul-coveralls": "^1.0.3",
     "tape": "^4.0.0"
   }
 }
