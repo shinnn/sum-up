@@ -1,41 +1,35 @@
-'use strict';
+'use strong';
 
-var chalk = require('chalk');
-var sumUp = require('./');
-var test = require('tape');
+const chalk = require('chalk');
+const sumUp = require('.');
+const test = require('tape');
 
-var enabled = chalk.enabled;
+const enabled = chalk.enabled;
 
-var environment = '';
-/* istanbul ignore if */
-if (!chalk.supportsColor) {
-  environment = ' with non-color environment';
-}
-
-test('sumUp()' + environment, function(t) {
+test(`sumUp()${' with non-color environment'.repeat(Number(!!chalk.supportsColor))}`, t => {
   t.plan(11);
 
-  t.equal(sumUp.name, 'sumUp', 'should have a function name.');
+  t.strictEqual(sumUp.name, 'sumUp', 'should have a function name.');
 
-  t.equal(
+  t.strictEqual(
     sumUp({unsupportedObjectKey: 'bar'}),
     '',
     'should return empty string when the object has no supported properties.'
   );
 
-  t.equal(
+  t.strictEqual(
     sumUp({name: 'foo'}),
     chalk.cyan('foo'),
     'should return the name of the object with cyan color.'
   );
 
-  t.equal(
+  t.strictEqual(
     sumUp({version: '1.0.0', color: undefined}),
     chalk.gray('v1.0.0'),
     'should return the version of the object with gray color.'
   );
 
-  t.equal(
+  t.strictEqual(
     sumUp({
       homepage: 'http://nodejs.org/',
       description: 'foo'
@@ -44,7 +38,7 @@ test('sumUp()' + environment, function(t) {
     'should return the homepage URL and description of the object.'
   );
 
-  t.equal(
+  t.strictEqual(
     sumUp({
       name: 'å',
       color: true
@@ -53,7 +47,7 @@ test('sumUp()' + environment, function(t) {
     'should explicitly add ANSI colors to the string when `color` option is enabled.'
   );
 
-  t.equal(
+  t.strictEqual(
     sumUp({
       name: 'foo',
       version: '1.0.0',
@@ -68,7 +62,7 @@ test('sumUp()' + environment, function(t) {
     'should join all supported properties into a string.'
   );
 
-  t.equal(
+  t.strictEqual(
     sumUp({version: '2.0', color: false}),
     'v2.0',
     'should omit colors from string when `color` option is disabled.'
@@ -81,13 +75,13 @@ test('sumUp()' + environment, function(t) {
   );
 
   t.throws(
-    sumUp.bind(null),
+    () => sumUp(),
     /TypeError.*must be an object\./,
     'should throw a type error when it takes no arguments.'
   );
 
   t.throws(
-    sumUp.bind(null, true),
+    () => sumUp(true),
     /TypeError.*must be an object\./,
     'should throw a type error when the argument is not an object.'
   );

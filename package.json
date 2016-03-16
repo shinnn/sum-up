@@ -7,8 +7,8 @@
   "author": "Shinnosuke Watanabe (https://github.com/shinnn)",
   "scripts": {
     "pretest": "eslint --config @shinnn/node-legacy index.js test.js",
-    "test": "node test.js --color && node test.js --no-color",
-    "coverage": "istanbul cover test.js -- --color",
+    "test": "node --strong_mode test.js --color && node test.js --no-color",
+    "coverage": "node --strong_mode node_modules/.bin/istanbul cover test.js -- --color",
     "coveralls": "${npm_package_scripts_coverage} && istanbul-coveralls"
   },
   "license": "MIT",
