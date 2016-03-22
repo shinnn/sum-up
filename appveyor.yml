@@ -1,8 +1,0 @@
-shallow_clone: true
-sversion: '{build}'
-skip_tags: true
-install:
-  - ps: Install-Product node 5
-  - npm install
-build: off
-test_script: node test.js
