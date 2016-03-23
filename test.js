@@ -7,8 +7,6 @@ const test = require('tape');
 const enabled = chalk.enabled;
 
 test(`sumUp()${' with non-color environment'.repeat(Number(!!chalk.supportsColor))}`, t => {
-  t.plan(11);
-
   t.strictEqual(sumUp.name, 'sumUp', 'should have a function name.');
 
   t.strictEqual(
@@ -76,13 +74,24 @@ test(`sumUp()${' with non-color environment'.repeat(Number(!!chalk.supportsColor
 
   t.throws(
     () => sumUp(),
-    /TypeError.*must be an object\./,
+    /TypeError.*undefined is not a plain object. Expected an object of package information, /,
     'should throw a type error when it takes no arguments.'
   );
 
   t.throws(
-    () => sumUp(true),
-    /TypeError.*must be an object\./,
+    () => sumUp([
+      'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+      'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB'
+    ]),
+    /TypeError.*\[ [^\n]+ \] .*for example npm's package\.json `\{.*\}`\./,
     'should throw a type error when the argument is not an object.'
   );
+
+  t.throws(
+    () => sumUp({version: '1.0.0', color: new Set(['true'])}),
+    /TypeError.*Set \{ 'true' \} is neither true nor false\. `color` option must be a Boolean value\./,
+    'should throw a type error when `color` option is not a Boolean value.'
+  );
+
+  t.end();
 });
