@@ -31,14 +31,15 @@ npm install sum-up
 const sumUp = require('sum-up');
 ```
 
-### sumUp(*options*)
+### sumUp(*pkgData* [, *option*])
 
-*options*: `Object`  
+*pkgData*: `Object`  
+*option*: `Object`  
 Return: `String`
 
-It joins the `name`, `version`, `homepage` and `description` of the object (all is optional) into a string colorized with [ANSI escape code](https://github.com/sindresorhus/ansi-styles).
+It joins the `name`, `version`, `homepage` and `description` properties (all is optional) of the first argument into a string colorized with [ANSI escape code](https://github.com/sindresorhus/ansi-styles).
 
-#### options.color
+#### option.color
 
 Type: `Boolean`  
 Default: `true` if [the environment supports color](https://github.com/sindresorhus/supports-color), otherwise `false`
@@ -46,17 +47,14 @@ Default: `true` if [the environment supports color](https://github.com/sindresor
 `false` omits all ANSI escape code from the string.
 
 ```javascript
-let data = {
+const data = {
   name: 'cli-name',
   version: '0.6.11',
   description: 'My CLI tool.'
 }
 
 sumUp(data); //=> '\u001b[36mcli-name\u001b[39m \u001b[90mv0.6.11\u001b[39m\nMy CLI tool.'
-
-data.color = false;
-
-sumUp(data); //=> 'cli-name v0.6.11\nMy CLI tool.'
+sumUp(data, {color: false}); //=> 'cli-name v0.6.11\nMy CLI tool.'
 ```
 
 ## License

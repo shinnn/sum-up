@@ -37,10 +37,7 @@ test(`sumUp()${' with non-color environment'.repeat(Number(!!chalk.supportsColor
   );
 
   t.strictEqual(
-    sumUp({
-      name: 'å',
-      color: true
-    }),
+    sumUp({name: 'å'}, {color: true}),
     chalk.styles.cyan.open + 'å' + chalk.styles.cyan.close,
     'should explicitly add ANSI colors to the string when `color` option is enabled.'
   );
@@ -61,7 +58,7 @@ test(`sumUp()${' with non-color environment'.repeat(Number(!!chalk.supportsColor
   );
 
   t.strictEqual(
-    sumUp({version: '2.0', color: false}),
+    sumUp({version: '2.0'}, {color: false}),
     'v2.0',
     'should omit colors from string when `color` option is disabled.'
   );
@@ -79,16 +76,19 @@ test(`sumUp()${' with non-color environment'.repeat(Number(!!chalk.supportsColor
   );
 
   t.throws(
-    () => sumUp([
-      'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-      'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB'
-    ]),
-    /TypeError.*\[ [^\n]+ \] .*for example npm's package\.json `\{.*\}`\./,
-    'should throw a type error when the argument is not an object.'
+    () => sumUp(['A', 'B']),
+    /TypeError.*\[ 'A', 'B' \] .*for example npm's package\.json `\{.*\}`\./,
+    'should throw a type error when the argument is not a plain object.'
   );
 
   t.throws(
-    () => sumUp({version: '1.0.0', color: new Set(['true'])}),
+    () => sumUp({version: '0.0.0'}, Infinity),
+    /TypeError.*Infinity is not a plain object\..* must be a plain object or undefined\./,
+    'should throw a type error when the second argument is not a plain object.'
+  );
+
+  t.throws(
+    () => sumUp({version: '1.0.0'}, {color: new Set(['true'])}),
     /TypeError.*Set \{ 'true' \} is neither true nor false\. `color` option must be a Boolean value\./,
     'should throw a type error when `color` option is not a Boolean value.'
   );

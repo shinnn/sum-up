@@ -8,23 +8,34 @@ var util = require('util');
 
 var Chalk = require('chalk').constructor;
 
-module.exports = function sumUp(pkgData) {
+module.exports = function sumUp(pkgData, options) {
   if (!pkgData || Array.isArray(pkgData) || typeof pkgData !== 'object') {
     throw new TypeError(
-      util.inspect(pkgData).replace(/\n/g, '') +
+      util.inspect(pkgData) +
       ' is not a plain object. Expected an object of package information,' +
       ' for example npm\'s package.json `{name: ... version: ..., description: ..., ...}`.'
     );
   }
 
-  if (pkgData.color !== undefined && typeof pkgData.color !== 'boolean') {
+  if (options) {
+    if (Array.isArray(options) || typeof options !== 'object') {
+      throw new TypeError(
+        util.inspect(options) +
+        ' is not a plain object. The second argument of sum-up must be a plain object or undefined.'
+      );
+    }
+  } else {
+    options = {};
+  }
+
+  if (options.color !== undefined && typeof options.color !== 'boolean') {
     throw new TypeError(
-      util.inspect(pkgData.color).replace(/\n/g, '') +
+      util.inspect(options.color) +
       ' is neither true nor false. `color` option must be a Boolean value.'
     );
   }
 
-  var chalk = new Chalk({enabled: pkgData.color});
+  var chalk = new Chalk({enabled: options.color});
   var lines = [];
 
   var nameAndVersion = chalk.cyan(pkgData.name || '');
