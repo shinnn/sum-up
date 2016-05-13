@@ -8,8 +8,7 @@
   "scripts": {
     "pretest": "eslint --config @shinnn/node-legacy --rule 'complexity: [error, 15]' index.js test.js",
     "test": "node --strong_mode test.js --color && node test.js --no-color",
-    "coverage": "node --strong_mode node_modules/.bin/istanbul cover test.js -- --color",
-    "coveralls": "${npm_package_scripts_coverage} && istanbul-coveralls"
+    "coverage": "node --strong_mode node_modules/.bin/istanbul cover test.js -- --color"
   },
   "license": "MIT",
   "files": [
