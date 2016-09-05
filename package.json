@@ -31,9 +31,9 @@
     "chalk": "^1.0.0"
   },
   "devDependencies": {
-    "@shinnn/eslint-config-node-legacy": "^2.0.0",
-    "eslint": "^2.4.0",
-    "istanbul": "^0.4.2",
-    "tape": "^4.5.1"
+    "@shinnn/eslint-config-node-legacy": "^3.0.0",
+    "eslint": "^3.4.0",
+    "istanbul": "^0.4.5",
+    "tape": "^4.6.0"
   }
 }
