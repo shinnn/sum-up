@@ -1,4 +1,4 @@
-'use strong';
+'use strict';
 
 const chalk = require('chalk');
 const sumUp = require('.');
