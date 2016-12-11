@@ -77,7 +77,7 @@ test(`sumUp()${' with non-color environment'.repeat(Number(!!chalk.supportsColor
 
   t.throws(
     () => sumUp(['A', 'B']),
-    /TypeError.*\[ 'A', 'B' \] .*for example npm's package\.json `\{.*\}`\./,
+    /TypeError.*\[ 'A', 'B' ] .*for example npm's package\.json `\{.*\}`\./,
     'should throw a type error when the argument is not a plain object.'
   );
 
