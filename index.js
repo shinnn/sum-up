@@ -4,9 +4,9 @@
 */
 'use strict';
 
-var util = require('util');
+const util = require('util');
 
-var Chalk = require('chalk').constructor;
+const Chalk = require('chalk').constructor;
 
 module.exports = function sumUp(pkgData, options) {
   if (!pkgData || Array.isArray(pkgData) || typeof pkgData !== 'object') {
@@ -35,16 +35,18 @@ module.exports = function sumUp(pkgData, options) {
     );
   }
 
-  var chalk = new Chalk({enabled: options.color});
-  var lines = [];
+  const chalkOption = {};
 
-  var nameAndVersion = chalk.cyan(pkgData.name || '');
-  if (pkgData.version) {
-    if (pkgData.name) {
-      nameAndVersion += ' ';
-    }
-    nameAndVersion += chalk.gray('v' + pkgData.version);
+  if (options.color !== undefined) {
+    chalkOption.enabled = options.color;
   }
+
+  const chalk = new Chalk(chalkOption);
+  const lines = [];
+
+  const nameAndVersion = `${chalk.cyan(pkgData.name || '')}${
+    pkgData.version ? `${pkgData.name ? ' ' : ''}${chalk.gray('v' + pkgData.version)}` : ''
+  }`;
 
   if (nameAndVersion) {
     lines.push(nameAndVersion);
