@@ -4,35 +4,32 @@
 */
 'use strict';
 
-const util = require('util');
-
 const Chalk = require('chalk').constructor;
+const inspectWithKind = require('inspect-with-kind');
 
 module.exports = function sumUp(pkgData, options) {
   if (!pkgData || Array.isArray(pkgData) || typeof pkgData !== 'object') {
     throw new TypeError(
-      util.inspect(pkgData) +
-      ' is not a plain object. Expected an object of package information,' +
-      ' for example npm\'s package.json `{name: ... version: ..., description: ..., ...}`.'
+      `Expected an object of package information \`{name: ... version: ..., description: ..., ...}\`, but got ${
+        inspectWithKind(pkgData)
+      }.`
     );
   }
 
   if (options) {
     if (Array.isArray(options) || typeof options !== 'object') {
-      throw new TypeError(
-        util.inspect(options) +
-        ' is not a plain object. The second argument of sum-up must be a plain object or undefined.'
-      );
+      throw new TypeError(`The second argument of sum-up must be a plain object or undefined, but got ${
+        inspectWithKind(options)
+      }.`);
     }
   } else {
     options = {};
   }
 
   if (options.color !== undefined && typeof options.color !== 'boolean') {
-    throw new TypeError(
-      util.inspect(options.color) +
-      ' is neither true nor false. `color` option must be a Boolean value.'
-    );
+    throw new TypeError(`Expected \`color\` option to be a Boolean value, but got ${
+      inspectWithKind(options.color)
+    }.`);
   }
 
   const chalkOption = {};

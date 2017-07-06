@@ -70,25 +70,25 @@ bar`,
 
   t.throws(
     () => sumUp(),
-    /TypeError.*undefined is not a plain object. Expected an object of package information, /,
+    /TypeError.*Expected an object of package information `{name: \.{3} version: \.{3}, description: \.{3}, \.{3}}`/,
     'should throw a type error when it takes no arguments.'
   );
 
   t.throws(
     () => sumUp(['A', 'B']),
-    /TypeError.*\[ 'A', 'B' ] .*for example npm's package\.json `\{.*\}`\./,
+    /TypeError.*, but got \[ 'A', 'B' ] \(array\)\./,
     'should throw a type error when the argument is not a plain object.'
   );
 
   t.throws(
     () => sumUp({version: '0.0.0'}, Infinity),
-    /TypeError.*Infinity is not a plain object\..* must be a plain object or undefined\./,
+    /TypeError.*The second argument of sum-up must be a plain object or undefined, but got Infinity \(number\)\./,
     'should throw a type error when the second argument is not a plain object.'
   );
 
   t.throws(
     () => sumUp({version: '1.0.0'}, {color: new Set(['true'])}),
-    /TypeError.*Set \{ 'true' \} is neither true nor false\. `color` option must be a Boolean value\./,
+    /TypeError.*Expected `color` option to be a Boolean value, but got Set { 'true' }\./,
     'should throw a type error when `color` option is not a Boolean value.'
   );
 

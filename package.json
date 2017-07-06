@@ -28,7 +28,8 @@
     "cli-friendly"
   ],
   "dependencies": {
-    "chalk": "^2.0.1"
+    "chalk": "^2.0.1",
+    "inspect-with-kind": "^1.0.2"
   },
   "devDependencies": {
     "@shinnn/eslint-config-node": "^4.0.0",
