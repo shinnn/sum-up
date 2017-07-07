@@ -1,6 +1,6 @@
 {
   "name": "sum-up",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Summarize package information",
   "repository": "shinnn/sum-up",
   "homepage": "https://github.com/shinnn/sum-up",
@@ -34,7 +34,7 @@
   "devDependencies": {
     "@shinnn/eslint-config-node": "^4.0.0",
     "ansi-styles": "^3.1.0",
-    "eslint": "^4.1.1",
+    "eslint": "^4.2.0",
     "istanbul": "^0.4.5",
     "tape": "^4.7.0"
   },
