@@ -1,6 +1,6 @@
 # sum-up
 
-[![NPM version](https://img.shields.io/npm/v/sum-up.svg)](https://www.npmjs.com/package/sum-up)
+[![npm version](https://img.shields.io/npm/v/sum-up.svg)](https://www.npmjs.com/package/sum-up)
 [![Build Status](https://travis-ci.org/shinnn/sum-up.svg?branch=master)](https://travis-ci.org/shinnn/sum-up)
 [![Coverage Status](https://img.shields.io/coveralls/shinnn/sum-up.svg)](https://coveralls.io/r/shinnn/sum-up)
 
@@ -33,14 +33,14 @@ const sumUp = require('sum-up');
 
 *pkgData*: `Object`  
 *option*: `Object`  
-Return: `String`
+Return: `string`
 
 It joins the `name`, `version`, `homepage` and `description` properties (all is optional) of the first argument into a string colorized with [ANSI escape code](https://github.com/sindresorhus/ansi-styles).
 
 #### option.color
 
-Type: `Boolean`  
-Default: `true` if [the environment supports color](https://github.com/sindresorhus/supports-color), otherwise `false`
+Type: `boolean`  
+Default: `true` if [the environment supports colors](https://github.com/sindresorhus/supports-color), otherwise `false`
 
 `false` omits all ANSI escape code from the string.
 
@@ -57,6 +57,4 @@ sumUp(data, {color: false}); //=> 'cli-name v0.6.11\nMy CLI tool.'
 
 ## License
 
-Copyright (c) 2014 - 2017 [Shinnosuke Watanabe](https://github.com/shinnn)
-
-Licensed under [the MIT License](./LICENSE).
+[ISC License](./LICENSE) © 2017 Shinnosuke Watanabe

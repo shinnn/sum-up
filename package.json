@@ -10,7 +10,7 @@
 		"test-no-coverage": "node test.js --color && node test.js --no-color",
 		"test": "nyc --reporter=html --reporter=text npm run-script test-no-coverage --silent"
 	},
-	"license": "MIT",
+	"license": "ISC",
 	"files": [
 		"index.js"
 	],
